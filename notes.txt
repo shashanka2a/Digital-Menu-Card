@@ -1,0 +1,185 @@
+1: Django 3.0 Introduction & Instalation 
+
+
+2: Introduction To Django 3.0 Admin Panel 
+   
+    django-admin startproject ProjName
+    cd Proj 
+    python manage.py makemigrations 
+    python manage.py migrate    (For DB)
+    python manage.py runserver
+    python manage.py createsuperuser
+
+
+3: What Are Django Apps ?
+
+    django-admin startapp AppName
+
+
+4: URL Configuration In Django
+
+    app folder     =>   create sample view
+                        create urls.py [as like in project directory] 
+                        import view in urls 
+                        path for view
+    
+    project folder =>   In urls.py,include app.urls 
+                            
+
+6: What Are Django Models , 7: Registering Models To Admin Panel :
+
+    app folder     =>     create model 
+                          register in admin.py
+                          for name to appear in Admin Groups,include __str__ func()   
+
+
+8: Working With Django Shell  
+
+    python manage.py shell               
+
+
+9: Django Templates                                 
+
+
+10 : Template Inheritance In Django 
+
+    base.html => can be inherited by use of {%block content%} 
+                 {%endblock%}   {% extends 'base.html' %}
+    title => {%block title%} 
+    include => {%include 'nav.html' %}
+    urls = > {%url 'contact'%}
+
+
+12: Django Template Context    
+
+    Getting data from context (in views.py) to html (template) 
+    {{ name }}
+    
+    return render(request,'home.html',context)
+
+
+13: For Loop In Django     14: If Else Condition     
+    
+    {%for lang in list%}    {{lang}}     {%endfor%}
+    
+    {% if num==50 %}    {% else %}
+
+
+15: Retrieve Data From Database  
+    
+    Import models in Views
+    
+    obj = ModelName.objects.get(id=1)
+    context = [
+        "data":obj 
+    ]
+    
+    render data in html 
+    
+    {{data.name}}
+    {{data.price}}
+
+
+16: Retrieve Filtered Data From Database 
+    
+    def NewsDate(request,year):
+        artilce_list = ModelName.objects.filter(pub_date = year)
+        context = [
+            'year':year,
+            'article_list':article_list
+        ]
+    return render(request,'newsdate.html',context)
+
+    In urls.py 
+
+    path('newsdate/<int:year>',NewsDate,name='newsdate')
+
+    In newsdate.html
+
+    {{year}}
+
+
+17: Adding CSS Styles In Django   18: Adding Bootstrap Styles In Django 
+
+    <link rel="stylesheet" type = "text/css" href = "{% static 'css/style.css'%}"/>    
+
+    In base.html
+
+    {% load static %}
+
+    In settings.py 
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR,'static')
+    ]
+
+
+19 : Django Form Class       
+    
+    In models 
+       
+     class RegistrationData(forms.Form):
+        username = forms.CharField(max_length=100)
+        password = formas.CharField(max_length=100) 
+
+    In forms.py 
+
+     from django import forms
+
+     class RegistrationForm(forms.Form):
+        username = forms.CharField(max_length=100)
+        password = formas.CharField(max_length=100)
+    
+    In Views 
+
+    from .forms import RegisterationForm
+
+    def register(request):
+        context = [
+            'form':RegisterationForm
+        ]
+        return render(request,'signup.html',context)
+
+    In Template
+
+    {{form}}
+    .as_p   (as paragraph).
+    <form action="" method = "post">
+    {{ form.as_p }}
+    <button type = "sumbit" value = "Register></button> 
+
+    In views
+
+    def addUser(request):
+        form = RegisterationForm(request.POST)
+        if form.is_valid():
+            myregister = RegistrationData(username = form.cleaned_data['username'],
+                                        password = form.cleaned_data['password']                                       ) 
+            myregister.save()
+        return redirect('home')
+
+    In urls 
+
+    path('addUser/',addUser,name="adduser")
+
+    In template 
+
+    <form action = {% url 'adduser' %} method = "post">
+    {%csrf_token%}
+
+
+20 :Convert HTML Form To Django Form
+
+    To convert Html bootstrap templates to django forms
+
+    In forms.py 
+
+    username  = forms.CharField(max_length = 100,
+                                widget = forms.TextInput(attrs={
+                                    'class':'form-control',
+                                    'placeholder':'Username'
+                                }))
+
+    In templates 
+
+    {{form.username}}

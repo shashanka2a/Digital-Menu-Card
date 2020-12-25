@@ -1,0 +1,180 @@
+body
+{
+  text-align: center;
+}
+a
+{
+  font-family: "Ubuntu";
+}
+
+
+                     /* Navbar */
+#title
+{
+  background-color: #ff6f3c;
+}
+.navbar
+{
+  padding:0 0 120px;
+}
+.navbar-brand
+{
+  font-family: "Ubuntu";
+  font-size: 2rem;
+  font-weight: bold;
+}
+                    /* Container1 */
+h1
+{
+  font-family: "Montserrat";
+  font-size: 3rem;
+  line-height: 1.5;
+}
+.container-fluid
+{
+  padding:2% 14%;
+}
+.nav-item
+{
+  padding:15px;
+}
+.nav-link
+{
+  font-size: 1.1rem;
+}
+.download-b
+{
+  margin:5% 3% 5% 0;
+}
+.Burger
+{
+  height: 80%;
+  width: 80%;
+}
+
+.crazyb
+{
+  color: #fff;
+  font-family: "Montserrat";
+  font-weight: 900;
+}
+                    /* Features */
+.container
+{
+  padding:10% 7% ;
+  font-family: "Montserrat";
+  font-weight:700;
+}
+h3
+{
+  font-size: 1.4rem;
+  font-weight:700;
+}
+.feat
+{
+  font-size: 0.9rem;
+  font-weight:400;
+}
+.icon
+{
+  margin-bottom: 15px;
+  color: #ffc93c ;
+}
+.icon:hover
+{
+  color:#ff9a3c;
+}
+
+                     /* container3 */
+#testimonials
+{
+  background-color: #ff6f3c;
+}
+#press
+{
+  background-color: #ff6f3c;
+  padding:0 4% 4% 4% ;
+}
+.bran
+{
+  margin: 20px 20px 50px;
+  width:15%;
+}
+.sniff
+{
+  padding-bottom: 25px;
+  font-family: "Montserrat";
+  font-weight: 900;
+  color:#fff;
+  line-height: 1.5;
+}
+.testimonial-image1
+{
+  border-radius: 100%;
+  margin:20px;
+  width: 20%;
+}
+.testimonial-image
+{
+  border-radius: 100%;
+  margin:20px;
+  width:18%;
+}
+.carousel-item
+{
+  padding:8% 15% ;
+  font-family: "Montserrat";
+  font-weight: 400;
+  color:#fff;
+}
+.testimonial-text
+{
+  font-family: "Montserrat";
+  font-weight: 900;
+}
+
+                  /* Pricing */
+#pricing
+{
+  padding: 8% 15%;
+  font-family: "Montserrat";
+}
+.plan
+{
+  font-weight: 900;
+}
+
+                    /* Footer */
+.foot
+{
+  background-color: #ff6f3c;
+  padding: 5% 14% 3% 14%;
+
+}
+.Copyright
+{
+  padding:3%;
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.footte
+{
+  font-family: "Montserrat";
+  font-weight: 900;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #fff;
+}
+.punk
+{
+  padding: 0.4%;
+}
+                  /* Media Query Breakpoints*/
+@media(max-width:1028px)
+{
+  .testimonial-text
+  {
+    font-size: 1.2rem;
+  }
+}
