@@ -2,15 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-FOOD_CHOICES = [
-    ('all', 'all'),
-    ('biryani', 'biryani'),
-    ('manchuria', 'manchuria'),
-    ('friedRice','friedRice'),
-    ('noodles','noodles'),
-    ('cooldrinks','cooldrinks')
-]
-
 class Item(models.Model):
     name = models.CharField(max_length=30,null=False)
     price = models.FloatField()
