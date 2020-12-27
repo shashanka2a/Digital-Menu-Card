@@ -273,19 +273,18 @@ section{
           <a class="nav-link" id="pills-noodles-tab" data-toggle="pill" href="#pills-noodles" role="tab" aria-controls="pills-noodles" aria-selected="false">Noodles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-chinese-tab" data-toggle="pill" href="#pills-cooldrinks" role="tab" aria-controls="pills-cooldrinks" aria-selected="false">Cooldrinks</a>
+          <a class="nav-link" id="pills-cooldrinks-tab" data-toggle="pill" href="#pills-cooldrinks" role="tab" aria-controls="pills-cooldrinks" aria-selected="false">Cooldrinks</a>
         </li>
     </ul>
   </div>
 </nav>
 
-  <!-- Pricing -->
+<!-- Pricing -->
+<section id="pricing">
+<div class="tab-content" id="pills-tabContent">
 
-  <section id="pricing">
-    <div class="tab-content" id="pills-tabContent">
-    {% for product in products %}
-    
-    <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+<div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+    {% for product in products %}  
     <div class="col-lg-4 tab">
       <div class="card">
         <div class="card-header">
@@ -302,30 +301,121 @@ section{
         </div>
       </div>
       </div>
+    {% endfor %}
+</div>
+
+<div class="tab-pane fade" id="pills-fried" role="tabpanel" aria-labelledby="pills-fried-tab">
+    {% for product in fried %}  
+    <div class="col-lg-4 tab">
+      <div class="card">
+        <div class="card-header">
+          <h3>{{product.name}}</h3>
+        </div>
+          <br>
+        <div class="card-body">
+          <img class="thumbnail" src="{{product.imageURL}}">
+          <br>
+          <h3 class="pri" style = "  font-size: 1.2rem;
+          font-weight:500;">Rs.{{product.price|floatformat:2}}</h3>
+          <br>
+          <button type="button" class="btn btn-dark btn-lg btn-block">Order Now</button>
+        </div>
+      </div>
+      </div>
+    {% endfor %}
+</div>
+
+<div class="tab-pane fade" id="pills-noodles" role="tabpanel" aria-labelledby="pills-noodles-tab">
+  {% for product in noodles %}  
+  <div class="col-lg-4 tab">
+    <div class="card">
+      <div class="card-header">
+        <h3>{{product.name}}</h3>
+      </div>
+        <br>
+      <div class="card-body">
+        <img class="thumbnail" src="{{product.imageURL}}">
+        <br>
+        <h3 class="pri" style = "  font-size: 1.2rem;
+        font-weight:500;">Rs.{{product.price|floatformat:2}}</h3>
+        <br>
+        <button type="button" class="btn btn-dark btn-lg btn-block">Order Now</button>
+      </div>
     </div>
-</div>
-  <br><br>
-
-</div>
+    </div>
   {% endfor %}
-</section> 
+</div>
 
 
-
-
-
-
-<section id="pricing">
-  {% for product in products %}
-
-  {% if product.desc == Biryani %}
-
-  
-    <p>{{product.name}}</p>
-
-  {% endif %}
+<div class="tab-pane fade" id="pills-manchuria" role="tabpanel" aria-labelledby="pills-noodles-tab">
+  {% for product in manchuria %}  
+  <div class="col-lg-4 tab">
+    <div class="card">
+      <div class="card-header">
+        <h3>{{product.name}}</h3>
+      </div>
+        <br>
+      <div class="card-body">
+        <img class="thumbnail" src="{{product.imageURL}}">
+        <br>
+        <h3 class="pri" style = "  font-size: 1.2rem;
+        font-weight:500;">Rs.{{product.price|floatformat:2}}</h3>
+        <br>
+        <button type="button" class="btn btn-dark btn-lg btn-block">Order Now</button>
+      </div>
+    </div>
+    </div>
   {% endfor %}
-</section> 
+</div>
+
+
+
+<div class="tab-pane fade" id="pills-cooldrinks" role="tabpanel" aria-labelledby="pills-noodles-tab">
+  {% for product in cooldrinks %}  
+  <div class="col-lg-4 tab">
+    <div class="card">
+      <div class="card-header">
+        <h3>{{product.name}}</h3>
+      </div>
+        <br>
+      <div class="card-body">
+        <img class="thumbnail" src="{{product.imageURL}}">
+        <br>
+        <h3 class="pri" style = "  font-size: 1.2rem;
+        font-weight:500;">Rs.{{product.price|floatformat:2}}</h3>
+        <br>
+        <button type="button" class="btn btn-dark btn-lg btn-block">Order Now</button>
+      </div>
+    </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+
+<div class="tab-pane fade" id="pills-biryani" role="tabpanel" aria-labelledby="pills-noodles-tab">
+  {% for product in biryani %}  
+  <div class="col-lg-4 tab">
+    <div class="card">
+      <div class="card-header">
+        <h3>{{product.name}}</h3>
+      </div>
+        <br>
+      <div class="card-body">
+        <img class="thumbnail" src="{{product.imageURL}}">
+        <br>
+        <h3 class="pri" style = "  font-size: 1.2rem;
+        font-weight:500;">Rs.{{product.price|floatformat:2}}</h3>
+        <br>
+        <button type="button" class="btn btn-dark btn-lg btn-block">Order Now</button>
+      </div>
+    </div>
+    </div>
+  {% endfor %}
+</div>
+</section>
+
+
 
   <!--
   <section>
