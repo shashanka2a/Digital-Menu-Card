@@ -4,28 +4,18 @@ from .models import *
 # Create your views here.
 
 
-def home(request):
-    return render(request, 'home.html')
-
-
 def Contact(request):
     return HttpResponse('<h3>Contact Us</h3>')
 
-def store(request):
-    products = Item.objects.all()
 
-    fried = Item.objects.filter(desc="Fried")
-    noodles = Item.objects.filter(desc="Noodles")
-    manchuria = Item.objects.filter(desc="Manchurian")
-    cooldrinks = Item.objects.filter(desc="Cooldrink")
-    biryani = Item.objects.filter(desc="Biryani")
+def store(request,itemname='all'):
 
-    context = {'products': products,
-               'fried': fried,
-               'noodles': noodles,
-               'manchuria': manchuria,
-               'cooldrinks': cooldrinks,
-               'biryani': biryani
-               }
+    if itemname=='all':
+        products = Item.objects.all()
+    else:
+        products = Item.objects.filter(desc=itemname)
+    context = {
+                'products': products
+            }
 
-    return render(request, 'store.html', context)
+    return render(request, 'QR/store.html', context)
