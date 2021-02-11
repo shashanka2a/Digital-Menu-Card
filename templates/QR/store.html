@@ -14,13 +14,15 @@
             <div class="card-body">
               <h5 class="card-title">{{i.name}}</h5>
               <p class="card-text"><b>Rs:  {{i.price}}</b></p>
-              <a href="#" class="btn btn-primary">Add To Cart</a>
+              <a href="{% url 'qr:additemtocart' i.id %}" class="btn btn-primary">Add To Cart</a>
             </div>
           </div>
           <br>
+
     </div>
     {% endfor %}
 </div>
+
 
 
 {% endblock %}
