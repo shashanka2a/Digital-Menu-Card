@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<div class='col-sm-8 col-sm-offset-2'>
+
+    {% if empty %}
+    
+        <h1 style="text-align:center;">Cart is empty</h1>
+    
+    {% else %}
+    
+        <table class='table'>
+        <thead>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th></th>
+        </thead>
+        <tfoot>
+            <tr>
+            <td></td>
+            <td></td>
+            <td>Total: {{ cart.total }}</td>
+            <td><a href="#" class="btn btn-success">Checkout</a></td>
+            </tr>
+        </tfoot>
+        
+        {% for i in cart.cartitem_set.all %}
+            <tr>
+                <td>{{ i.item }}</td>
+                <td>{{ i.item.price }}</td>
+                <td>{{ i.quantity }}</td>
+                <td><a href="{% url 'qr:removefromcart' i.id %}">Remove</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+    </div>
+    
+{% endblock %}

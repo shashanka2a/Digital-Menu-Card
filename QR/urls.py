@@ -1,10 +1,17 @@
 from django.urls import path
-from .views import home, Contact, store
+from .views import Contact, store,addCartV,cartV,remove_from_cart
 from django.conf import settings
 from django.conf.urls.static import static
+
+
+app_name = "qr"
+
 urlpatterns = [
-    path('home/', home, name='home'),
-    path('store', store, name='store'),
-    path('contact/', Contact, name='contact')
+    path('store/<str:itemname>/', store, name='store'),
+    path('additem/<str:itemid>/',addCartV,name='additemtocart'),
+    path('contact/', Contact, name='contact'),
+    path('cart/',cartV,name='cart'),
+    path('remove/<int:id>',remove_from_cart,name='removefromcart')
 ]
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

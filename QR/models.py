@@ -2,12 +2,28 @@ from django.db import models
 
 # Create your models here.
 
+class User(models.Model):
+    tableId = models.CharField(max_length=30,null=True,blank=True)
+    name = models.CharField(max_length=200,null=True,blank=True)
+    phoneNo = models.CharField(max_length=20,null=True,blank=True)
+
+    def __str__(self):
+        return "Table No:   "+ self.tableId + "  Customer Name: "+self.name
+        
+
+DESC_CHOICES = [
+    ('biryani','biryani'),
+    ('cooldrinks','cooldrinks'),
+    ('manchuria','manchuria'),
+    ('noodles','noodles'),
+    ('fried','fried')
+]
 
 class Item(models.Model):
     name = models.CharField(max_length=30)
     price = models.FloatField()
     image = models.ImageField(null=True, blank=True)
-    desc = models.TextField()
+    desc = models.CharField(max_length=200,choices=DESC_CHOICES)
 
     def __str__(self):
         return self.name
@@ -20,19 +36,20 @@ class Item(models.Model):
             url = ''
         return url
 
-
-class Order(models.Model):
-    table_id = models.CharField(max_length=20, blank=True, null=True)
-    date_ordered = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False)
-    transaction_id = models.CharField(max_length=100, null=True)
+class Cart(models.Model):
+    total = models.PositiveIntegerField(default=0)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
-        return str(self.table_id)
+        return "Cart: " + str(self.id)
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE,null=True,blank=True)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE,null=True,blank=True)
+    quantity = models.IntegerField(default=1,null=True,blank=True)
+    line_total = models.IntegerField(null=True,blank=True,default=0)
 
 
-class OrderItem(models.Model):
-    product = models.ForeignKey(Item, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField(default=0, null=True, blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return "Cart: " + str(self.cart.id) + " CartItem:  " + str(self.id)
+
