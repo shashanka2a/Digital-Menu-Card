@@ -51,5 +51,5 @@ class CartItem(models.Model):
 
 
     def __str__(self):
-        return "Cart: " + str(self.cart.id) + " CartItem:  " + str(self.id)
+        return str(self.id)
 
