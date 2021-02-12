@@ -15,14 +15,15 @@
             <th>Item</th>
             <th>Price</th>
             <th>Qty</th>
-            <th></th>
+            <th>Add</th>
+            <th>Remove</th>
         </thead>
         <tfoot>
             <tr>
             <td></td>
             <td></td>
             <td>Total: {{ cart.total }}</td>
-            <td><a href="#" class="btn btn-success">Checkout</a></td>
+            <td><a href="#" class="btn btn-dark ">Checkout</a></td>
             </tr>
         </tfoot>
         
@@ -30,8 +31,16 @@
             <tr>
                 <td>{{ i.item }}</td>
                 <td>{{ i.item.price }}</td>
-                <td>{{ i.quantity }}</td>
-                <td><a href="{% url 'qr:removefromcart' i.id %}">Remove</a></td>
+                <td>
+                    <form method="POST" action="{% url 'qr:updateitem' i.item.id  %}">
+                        {% csrf_token %}
+                        <input type="number" name="qty" placeholder="{{i.quantity}}">
+                        
+                </td>
+                <td>
+                    <input type="submit" class="btn btn-success" value="Update">
+                    </form></td>
+                <td><a class="btn btn-danger" href="{% url 'qr:removefromcart' i.id %}">Remove</a></td>
             </tr>
         {% endfor %}
         </table>

@@ -8,6 +8,7 @@ def Contact(request):
     return HttpResponse('<h3>Contact Us</h3>')
 
 def cartV(request):
+    
     try:
         the_id = request.session['cart_id']
     except:
@@ -22,6 +23,7 @@ def cartV(request):
             cartobj.save()
             context={'cart':cartobj}
         except:
+            request.session['items_count'] = 0
             context={'empty':True}
         
     else:
@@ -41,6 +43,24 @@ def remove_from_cart(request, id):
     cartitem.save()
     return redirect('qr:cart')
 
+def UpdateItem(request, id):
+    try:
+        the_id = request.session['cart_id']
+        cart = Cart.objects.get(id=the_id)
+    except:
+        pass
+
+    if request.method=='POST':
+        if request.POST.get('qty'):
+            cartitem = CartItem.objects.get(item__id = id)
+            qqty = request.POST.get('qty')
+            cartitem.quantity = qqty
+            cartitem.save()
+    else:
+        print('POST Not Working')
+    return redirect('qr:cart')
+
+
 def store(request,itemname='all'):
 
     if itemname=='all':
@@ -54,9 +74,8 @@ def store(request,itemname='all'):
     return render(request, 'QR/store.html', context)
 
 
-def addCartV(request,itemid):
 
-    itemid = int(itemid)
+def addCartV(request,itemid):
     try:
         the_id = request.session['cart_id']
     except:
@@ -72,13 +91,9 @@ def addCartV(request,itemid):
         cartobj.id = the_id
         cartobj.save()
 
+    itemobj = Item.objects.get(id=itemid)
 
-    try:
-        item = Item.objects.get(id = itemid)
-    except:
-        pass
-    
-    cart_item ,created = CartItem.objects.get_or_create(cart=cartobj,item=item,quantity=1,line_total=0)
+    cart_item ,created = CartItem.objects.get_or_create(cart=cartobj,item=itemobj)
     
 
     if created:
@@ -90,3 +105,4 @@ def addCartV(request,itemid):
         cartobj.save()
 
     return redirect('qr:store','all')
+    
