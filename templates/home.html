@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://kit.fontawesome.com/9e19fba627.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark px-4 ">
+
+        <a class="navbar-brand pl-2" href="#"><h3>Tomato</h3></a>
+
+        <button class="navbar-toggler btn btn-outline-dark" type="button" data-toggle="collapse" data-remote="myRemoteURL.do" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse " id="mainNavbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active ">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link btn btn-outline-success" href="#" data-toggle="modal" data-remote="myRemoteURL.do" data-target="#signUp">Sign-up</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <div class="main-section d-flex justify-content-center">
+            <form class="form-inline ">
+                    <div class="input-group">
+                        <input class="form-control search-bar bg-white rounded-pill" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+            </form>
+    </div>
+
+
+    <!-- Centered Pills -->
+<ul class="nav nav-pills nav-justified">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Menu 1</a></li>
+  <li><a href="#">Menu 2</a></li>
+  <li><a href="#">Menu 3</a></li>
+</ul>
+    <!-- nav -->
+
+    <nav class="navbar navbar-expand-md navbar-light text-white px-4 mt-4">
+            <button class="navbar-toggler mb-3" type="button" data-toggle="collapse" data-remote="myRemoteURL.do" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-chevron-circle-down"></i> Categories
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="nav">
+              <ul class="nav nav-pills mb-3 justify-content-center flex-column flex-md-row" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">All</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-indian-tab" data-toggle="pill" href="#pills-indian" role="tab" aria-controls="pills-indian" aria-selected="false">Biryani</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-italian-tab" data-toggle="pill" href="#pills-italian" role="tab" aria-controls="pills-italian" aria-selected="false">Manchuria</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-japanese-tab" data-toggle="pill" href="#pills-japanese" role="tab" aria-controls="pills-japanese" aria-selected="false">Fried Rice</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-mexican-tab" data-toggle="pill" href="#pills-mexican" role="tab" aria-controls="pills-mexican" aria-selected="false">Noodles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-chinese-tab" data-toggle="pill" href="#pills-chinese" role="tab" aria-controls="pills-chinese" aria-selected="false">Cooldrinks</a>
+                  </li>
+              </ul>
+            </div>
+      </nav>
+      <div class="tab-content" id="pills-tabContent">
+      <!-- cateogery -->
+
+      <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+            <div class="container ">
+                <div class="row">
+                    <div class="col col-md-6 col-lg-4">
+                        <div class="container fix">
+                            <div class="card shadow" style="width: 18rem;">
+                                <img src="images/pizza.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title pb-1">Pizza</h5>
+                                  <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-6 col-lg-4">
+                        <div class="container fix">
+                            <div class="card shadow" style="width: 18rem;">
+                                <img src="images/tacos.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title pb-1">Tacos</h5>
+                                  <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-6 col-lg-4">
+                        <div class="container fix">
+                            <div class="card shadow" style="width: 18rem;">
+                                <img src="images/tandoor.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title pb-1">Tandoor</h5>
+                                  <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-6 col-lg-4">
+                        <div class="container fix">
+                            <div class="card shadow" style="width: 18rem;">
+                                <img src="images/noodles.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title pb-1">Noodles</h5>
+                                  <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-6 col-lg-4">
+                        <div class="container fix">
+                            <div class="card shadow" style="width: 18rem;">
+                                <img src="images/pasta.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title pb-1">Pasta</h5>
+                                  <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-6 col-lg-4">
+                        <div class="container fix">
+                            <div class="card shadow" style="width: 18rem;">
+                                <img src="images/sushi.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title pb-1">Sushi</h5>
+                                  <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Indian -->
+    <div class="tab-pane fade" id="pills-indian" role="tabpanel" aria-labelledby="pills-indian-tab">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-6 col-lg-4">
+                    <div class="container fix">
+                        <div class="card shadow" style="width: 18rem;">
+                            <img src="images/tandoor.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title pb-1">Tandoor</h5>
+                            <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+          
+    <!-- Italian -->
+    <div class="tab-pane fade" id="pills-italian" role="tabpanel" aria-labelledby="pills-italian-tab">
+            <div class="container">
+              <div class="row">
+                    <div class="col col-md-6 col-lg-4">
+                      <div class="container fix">
+                          <div class="card shadow" style="width: 18rem;">
+                              <img src="images/pasta.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title pb-1">Pasta</h5>
+                                <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col col-md-6 col-lg-4">
+                            <div class="container fix">
+                                <div class="card shadow" style="width: 18rem;">
+                                    <img src="images/pizza.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title pb-1">Pizza</h5>
+                                      <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- japaneses -->
+        <div class="tab-pane fade" id="pills-japanese" role="tabpanel" aria-labelledby="pills-japanese-tab">
+                <div class="container">
+                  <div class="row">
+                      <div class="col col-md-6 col-lg-4">
+                          <div class="container fix">
+                              <div class="card shadow" style="width: 18rem;">
+                                  <img src="images/sushi.jpg" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title pb-1">Sushi</h5>
+                                    <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Mexican -->
+        <div class="tab-pane fade" id="pills-mexican" role="tabpanel" aria-labelledby="pills-mexican-tab">
+                <div class="container">
+                  <div class="row">
+                      <div class="col col-md-6 col-lg-4">
+                          <div class="container fix">
+                              <div class="card shadow" style="width: 18rem;">
+                                  <img src="images/tacos.jpg" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title pb-1">1984</h5>
+                                    <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- chinese -->
+        <div class="tab-pane fade" id="pills-chinese" role="tabpanel" aria-labelledby="pills-chinese-tab">
+                <div class="container">
+                  <div class="row">
+                      <div class="col col-md-6 col-lg-4">
+                          <div class="container fix">
+                              <div class="card shadow" style="width: 18rem;">
+                                  <img src="images/noodles.jpg" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title pb-1">1984</h5>
+                                    <a href="#" class="btn btn-outline-success"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+     <!--Footer-->
+     <section id="footer">
+            <div class="container text-center text-white mb-0 py-3 mt-5">
+              <a class="navbar-brand text-white pb-3" href="#"><h4> Tomato</h4></a>
+              <p>
+                  <i class="fab fa-twitter-square px-2 "></i>
+                  <i class="fab fa-instagram px-2"></i>
+                  <i class="fab fa-facebook-square px-2"></i>
+              </p>
+              <p>© Copyright 2019 Tomato</p>
+            </div>
+        </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
