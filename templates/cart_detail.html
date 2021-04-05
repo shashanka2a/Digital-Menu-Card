@@ -1,52 +1,52 @@
-{% extends 'base.html' %}
+    {% extends 'base.html' %}
 
-{% block body_block %}
+    {% block body_block %}
 
-{% load cart_tag %}
+    {% load cart_tag %}
 
 
 
-    <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-8 col-sm-offset-2'>
 
-        <table class='table'>
-        <thead>
-            <th>Item</th>
-            <th>Price</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Add / Remove</th>
-            <th>delete Item</th>
-        </thead>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Total: {{total}}</td>
-                <td><a href="" class="btn btn-dark ">Checkout</a></td>
-            </tr>
-        </tfoot>
+            <table class='table'>
+            <thead>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Add / Remove</th>
+                <th>delete Item</th>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total: {{total}}</td>
+                    <td><a href="{% url 'orderit' %}" class="btn btn-dark ">Checkout</a></td>
+                </tr>
+            </tfoot>
 
-         {% for key,value in request.session.cart.items %}
-            <tr>
-                <td>{{value.name}}</td>
-                <td>{{value.price}}</td>
-                <td>{{value.quantity}}</td>
+            {% for key,value in request.session.cart.items %}
+                <tr>
+                    <td>{{value.name}}</td>
+                    <td>{{value.price}}</td>
+                    <td>{{value.quantity}}</td>
 
-                <td>{{ value.price|multiply:value.quantity }}</td>
-                <td>
-                    <a href="{% url 'item_increment' value.product_id %}">+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="{% url 'item_decrement' value.product_id %}">-</a>
-                </td>
-                <td>
-                    <a href="{% url 'item_clear' value.product_id %}">del</a>
-                </td>
-            </tr>
+                    <td>{{ value.price|multiply:value.quantity }}</td>
+                    <td>
+                        <a href="{% url 'item_increment' value.product_id %}">+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'item_decrement' value.product_id %}">-</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'item_clear' value.product_id %}">del</a>
+                    </td>
+                </tr>
 
-        {% endfor %}
-        </table>
+            {% endfor %}
+            </table>
 
-    </div>
+        </div>
 
-{% endblock %}
+    {% endblock %}

@@ -72,3 +72,14 @@ def cart_detail(request):
     context = {"total":total_price}
 
     return render(request, 'cart_detail.html',context)
+
+
+def order(request):
+    cart = Cart(request)
+    table_obj = Table.objects.get_or_create(table_no=present_pk)
+    dic = list(cart.session['cart'].values())
+    total_price = sum([each['quantity'] * (float(each['price'])) for each in dic])
+    for prod in cart.session['cart'].values():
+        OrderItem.objects.create(table=table_obj[0],name=prod['name'],price=str(prod['price']),quantity=prod['quantity'])
+    cart.clear()
+    return redirect('store',present_pk)
