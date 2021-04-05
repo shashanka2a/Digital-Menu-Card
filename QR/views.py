@@ -1,79 +1,74 @@
 from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse
 from .models import *
+from cart.cart import Cart
+
 # Create your views here.
 
+present_pk=0
 
 def Contact(request):
     return HttpResponse('<h3>Contact Us</h3>')
 
-def cartV(request):
-    try:
-        the_id = request.session['cart_id']
-        cart = Cart.objects.get(id=the_id)
-    except:
-        the_id = None
+def store(request,pk):
+    products = Item.objects.all()
+    present_pk=pk
+    fried = Item.objects.filter(desc="Fried")
+    noodles = Item.objects.filter(desc="Noodles")
+    manchuria = Item.objects.filter(desc="Manchurian")
+    cooldrinks = Item.objects.filter(desc="Cooldrink")
+    biryani = Item.objects.filter(desc="Biryani")
 
-    if the_id:
-        new_total = 0
-        line_total=0
-        for i in cart.cartitem_set.all():
-            line_total +=  float(i.item.price)*i.quantity
-            new_total += line_total
-        
-        request.session['items_total'] = cart.cartitem_set.count()
-        cart.total=new_total
-        cart.save()
-        context={'cart':cart}
-    else:
-        context={'empty':True}
+    context = {'products': products,
+               'fried': fried,
+               'noodles': noodles,
+               'manchuria': manchuria,
+               'cooldrinks': cooldrinks,
+               'biryani': biryani
+               }
 
-    return render(request,'QR/cart.html',context)
+    return render(request, 'store.html', context)
 
-def remove_from_cart(request, id):
-    try:
-        the_id = request.session['cart_id']
-        cart = Cart.objects.get(id=the_id)
-    except:
-        pass
-    cartitem = CartItem.objects.get(id=id)
-    cartitem.cart = None
-    cartitem.save()
-    return redirect('qr:cart')
-
-def store(request,itemname='all'):
-
-    if itemname=='all':
-        products = Item.objects.all()
-    else:
-        products = Item.objects.filter(desc=itemname)
-    context = {
-                'products': products
-            }
-
-    return render(request, 'QR/store.html', context)
+def cart_add(request, id):
+    cart = Cart(request)
+    product = Item.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("store",present_pk)
 
 
-def addCartV(request,itemid):
-    
-    try:
-        the_id = request.session['cart_id']
-    except:
-        new_cart = Cart()
-        new_cart.save()
-        request.session['cart_id'] = new_cart.id
-        the_id = new_cart.id
+def item_clear(request, id):
+    cart = Cart(request)
+    product = Item.objects.get(id=id)
+    cart.remove(product)
+    return redirect("cart_detail")
 
-    cartobj = Cart.objects.get_or_create(id=the_id)
-    cartinstance = Cart.objects.get(id=the_id)
-    itemobj = Item.objects.get(id = itemid)
-    cartitemobj =CartItem()
-    cartitemobj.cart = cartinstance
-    cartitemobj.item = itemobj
-    cartitemobj.quantity=1
-    cartitemobj.line_total = itemobj.price
-    cartitemobj.save()
+def item_increment(request, id):
+    cart = Cart(request)
+    product = Item.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("cart_detail")
 
-    return redirect('qr:store','all')
+def item_decrement(request, id):
+    cart = Cart(request)
+    for pro in cart.session['cart'].values():
+        quan = pro['quantity']
+    if(quan==1):
+        item_clear(request,id)
+
+    product = Item.objects.get(id=id)
+    cart.decrement(product=product)
+    return redirect("cart_detail")
 
 
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart_detail")
+
+def cart_detail(request):
+    cart = Cart(request)
+    dic = list(cart.session['cart'].values())
+    total_price = sum([each['quantity']*(float(each['price'])) for each in dic])
+    context = {"total":total_price}
+
+    return render(request, 'cart_detail.html',context)
