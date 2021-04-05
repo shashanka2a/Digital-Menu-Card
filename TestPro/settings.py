@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'QR'
+    'QR',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },
@@ -120,3 +122,5 @@ USE_TZ = True
 MEDIA_URL = '/images/'
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+CART_SESSION_ID = 'cart'
