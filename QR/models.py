@@ -19,3 +19,19 @@ class Item(models.Model):
         except:
             url = ''
         return url
+
+class Table(models.Model):
+    table_no = models.IntegerField()
+
+    def __int__(self):
+        return self.table_no
+
+
+class OrderItem(models.Model):
+    table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name='items')
+    name = models.CharField(max_length=20, null=True)
+    price = models.CharField(max_length=100,null=True,blank=True)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return str(self.id)
