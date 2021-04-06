@@ -12,6 +12,7 @@ def Contact(request):
 
 def store(request,pk):
     products = Item.objects.all()
+    global present_pk
     present_pk=pk
     fried = Item.objects.filter(desc="Fried")
     noodles = Item.objects.filter(desc="Noodles")
@@ -66,15 +67,17 @@ def cart_clear(request):
     return redirect("cart_detail")
 
 def cart_detail(request):
+    global present_pk
     cart = Cart(request)
     dic = list(cart.session['cart'].values())
     total_price = sum([each['quantity']*(float(each['price'])) for each in dic])
-    context = {"total":total_price}
+    context = {"total":total_price , "table_no" :present_pk }
 
     return render(request, 'cart_detail.html',context)
 
 
 def order(request):
+    global present_pk
     cart = Cart(request)
     table_obj = Table.objects.get_or_create(table_no=present_pk)
     dic = list(cart.session['cart'].values())
