@@ -1,6 +1,6 @@
 # Digital-Menu-Card
 
-We have come up with a solution to avoid social contact, that is to replace the physical presence of the server and the ‘menu’ with a digital menu card. The customer will be given a QR code at his table. After the QR Code scanning the customer gets into our website home page displaying the menu items and their respective price.
+In this pandemic situation,we have come up with a solution to avoid social contact, that is to replace the physical presence of the server and the ‘menu’ with a digital menu card. The customer will be given a QR code at his table. After the QR Code scanning the customer gets into our website home page displaying the menu items and their respective price.
 
 #### Customer View:
 It tracks all the information and details about the customers. We have read, ordering functionalities to this view. Users can view the food items available in the restaurant and order the items according to their interests.
