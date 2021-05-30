@@ -4,8 +4,17 @@
 
     {% load cart_tag %}
 
-
-        <p>Table NO : {{table_no}}</p>
+    <style>
+        th {
+            color: #000066;
+            font-size: 17px;
+        }
+        td {
+            color: #333300;
+            font-size: 15x;
+        }
+    </style> 
+        <p>Ordering from Table {{table_no}}</p>
 
         <div class='col-sm-8 col-sm-offset-2'>
 
@@ -16,7 +25,7 @@
                 <th>Qty</th>
                 <th>Price</th>
                 <th>Add / Remove</th>
-                <th>delete Item</th>
+                <th>Delete Item</th>
             </thead>
             <tfoot>
                 <tr>
@@ -37,17 +46,17 @@
 
                     <td>{{ value.price|multiply:value.quantity }}</td>
                     <td>
-                        <a href="{% url 'item_increment' value.product_id %}">+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{% url 'item_decrement' value.product_id %}">-</a>
-                    </td>
-                    <td>
-                        <a href="{% url 'item_clear' value.product_id %}">del</a>
-                    </td>
-                </tr>
-
+                <a href="{% url 'item_increment' value.product_id %}" class="btn btn-info" role="button">+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'item_decrement' value.product_id %}" class="btn btn-danger" role="button">-</a>
+            </td>
+            <td>
+                <a href="{% url 'item_clear' value.product_id %}" class="btn btn-warning">clear</a>
+            </td>
+        </tr>
             {% endfor %}
             </table>
 
         </div>
 
     {% endblock %}
+
