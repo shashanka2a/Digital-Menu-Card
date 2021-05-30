@@ -76,7 +76,7 @@ def cart_detail(request):
 def order(request):
     global present_pk
     cart = Cart(request)
-    table_obj = Table.objects.get_or_create(table_no=present_pk,total=0)
+    table_obj = Table.objects.get_or_create(table_no=present_pk)
     dic = list(cart.session['cart'].values())
     total_price = sum([each['quantity'] * (float(each['price'])) for each in dic])
     for prod in cart.session['cart'].values():
