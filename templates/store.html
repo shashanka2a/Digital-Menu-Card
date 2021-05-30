@@ -207,19 +207,14 @@ section{
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Share</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">About Us</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{% url 'cart_detail' %}">Cart  (   {{request.session.cart|length}} )  </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'order_status' pk %}">Order Status</a>
           </li>
         </ul>
       </div>
+ 
     </div>
 
       <!-- Title -->
@@ -231,9 +226,12 @@ section{
           <button type="button" class="btn btn-dark btn-lg download-b"><i class="fab fa-apple"></i> Download</button>
           <button type="button" class="btn btn-light btn-lg download-b"><i class="fab fa-google-play"></i> Download</button>
         </div>
- 
+        <div class="col-lg-6 Punchl">
+          <img class="Burger" src="https://raw.githubusercontent.com/shashanka2a/Digital-Menu-Card/34f349791f43de44d6117a97840ef2949ff3f7af/static/images/food.svg" alt="iphone-mockup" />
+        </div>
       </div>
     </div>
+
   </section>
 
 
@@ -301,7 +299,9 @@ section{
         </div>
       </div>
       </div>
+      &nbsp;
     {% endfor %}
+
 </div>
 
 <div class="tab-pane fade" id="pills-fried" role="tabpanel" aria-labelledby="pills-fried-tab">
@@ -322,6 +322,7 @@ section{
         </div>
       </div>
       </div>
+      &nbsp;
     {% endfor %}
 </div>
 
@@ -343,6 +344,7 @@ section{
       </div>
     </div>
     </div>
+    &nbsp;
   {% endfor %}
 </div>
 
@@ -365,6 +367,7 @@ section{
       </div>
     </div>
     </div>
+    &nbsp;
   {% endfor %}
 </div>
 
@@ -388,6 +391,7 @@ section{
       </div>
     </div>
     </div>
+    &nbsp;
   {% endfor %}
 </div>
 
@@ -411,6 +415,7 @@ section{
       </div>
     </div>
     </div>
+    &nbsp;
   {% endfor %}
 </div>
 </section>
