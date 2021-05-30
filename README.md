@@ -36,3 +36,11 @@ python manage.py runserver
 ### Manager View
 
 ![order](ordersdisplay.jpeg)
+
+#### Table 1
+
+![qr1](qr1.png)
+
+#### Table 2
+
+![qr2](qr2.png)
