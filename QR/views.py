@@ -7,25 +7,22 @@ from cart.cart import Cart
 
 present_pk=0
 
-def Contact(request):
-    return HttpResponse('<h3>Contact Us</h3>')
-
 def store(request,pk):
     products = Item.objects.all()
     global present_pk
-    present_pk=pk
+    present_pk = pk
     fried = Item.objects.filter(desc="Fried")
     noodles = Item.objects.filter(desc="Noodles")
     manchuria = Item.objects.filter(desc="Manchurian")
     cooldrinks = Item.objects.filter(desc="Cooldrink")
     biryani = Item.objects.filter(desc="Biryani")
-
     context = {'products': products,
                'fried': fried,
                'noodles': noodles,
                'manchuria': manchuria,
                'cooldrinks': cooldrinks,
-               'biryani': biryani
+               'biryani': biryani,
+               'pk':pk,
                }
 
     return render(request, 'store.html', context)
@@ -79,10 +76,48 @@ def cart_detail(request):
 def order(request):
     global present_pk
     cart = Cart(request)
-    table_obj = Table.objects.get_or_create(table_no=present_pk)
+    table_obj = Table.objects.get_or_create(table_no=present_pk,total=0)
     dic = list(cart.session['cart'].values())
     total_price = sum([each['quantity'] * (float(each['price'])) for each in dic])
     for prod in cart.session['cart'].values():
         OrderItem.objects.create(table=table_obj[0],name=prod['name'],price=str(prod['price']),quantity=prod['quantity'])
+    tab_obj = Table.objects.filter(table_no=present_pk)
+    tab_obj.total = total_price
     cart.clear()
+    total = total_price
     return redirect('store',present_pk)
+
+def orders_display(request):
+    d = {} 
+    tables = [elem[0] for elem in list(Table.objects.all().values_list('table_no'))]
+    #print(tables)
+    for i in range(len(tables)):
+        table_obj = Table.objects.get(table_no = tables[i])
+        orders = OrderItem.objects.filter(table=table_obj)
+        d[tables[i]] = list(orders.values())
+    #print(d)
+    context = {"d":d}
+    return render(request, 'orders_display.html',context)
+
+def order_status(request,pk):
+    d = {}
+    tables = [elem[0] for elem in list(Table.objects.all().values_list('table_no'))]
+    if pk in tables:
+        table_obj = Table.objects.get(table_no = pk)
+        order = OrderItem.objects.filter(table=table_obj)
+        d[pk] = list(order.values())
+        context = {'d':d}
+        return render(request, 'order_status.html',context)
+    else:
+        return HttpResponse('<br><br><br><h2><center>Order ready✔️</center></h2>')
+
+def order_update(request,id):
+    t = Table.objects.get(table_no = id)
+    #o = OrderItem.objects.get(table=t)
+    """    
+    for ord in o:
+        PreviousOrders.objects.create(table=id,name=ord.name,price=ord.price,quantity=ord.quantity)
+    """
+    t.delete()
+    return redirect('orders_display')
+
