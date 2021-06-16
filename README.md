@@ -39,8 +39,8 @@ python manage.py runserver
 
 #### Table 1
 
-![qr1](qr1.png)
+![qr1](url_qrcode1.png)
 
 #### Table 2
 
-![qr2](qr2.png)
+![qr2](url_qrcode2.png)
